@@ -50,7 +50,7 @@ namespace Fill_A_Doc
                 Overlay.Visibility = Visibility.Collapsed;
                 pdf_src_textblock.Text = "no pdf selected!";
                 pdf_src_textblock.Foreground = new SolidColorBrush(Colors.Red);
-                MessageBox.Show("This PDF does not have any form fields! \n\nPlease create form fields on the PDF using softwares such as Open Office Writer or Adobe Acrobat.");
+                MessageBox.Show("This PDF does not have any form fields! \n\nPlease create form fields on the PDF using softwares such as Open Office Writer, Adobe Acrobat, etc.");
             }
             finally
             {
@@ -172,8 +172,6 @@ namespace Fill_A_Doc
 
             try
             {
-                //FileStream fs = File.Create(DEST, 1024);
-
                 form.SetGenerateAppearance(true);
 
                 PdfFont font = PdfFontFactory.CreateFont();
@@ -188,11 +186,7 @@ namespace Fill_A_Doc
                     form.GetField(FieldName).SetValue(tb.Text, font, fieldFontSize);
                 }
 
-                if (MessageBox.Show("PDF saved! \nPath: " + DEST + "\n\nDo you want to open the file?",
-                    "Successful", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    System.Diagnostics.Process.Start(DEST);
-                }
+                System.Diagnostics.Process.Start(DEST);
             }
             catch
             {
@@ -210,6 +204,17 @@ namespace Fill_A_Doc
             public string FieldDisplayName { get; set; }
             public bool IsMultiline { get; set; }
             public string DefaultValue { get; set; }
+        }
+
+        private void About_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            AboutBox window = new AboutBox();
+            window.Show();
+        }
+
+        private void Exit_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
         }
 
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
@@ -230,17 +235,6 @@ namespace Fill_A_Doc
                     }
                 }
             }
-        }
-
-        private void About_MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            AboutBox window = new AboutBox();
-            window.Show();
-        }
-
-        private void Exit_MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            System.Windows.Application.Current.Shutdown();
         }
     }
 

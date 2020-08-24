@@ -24,9 +24,9 @@
         <Grid>
             <StackPanel Orientation="Vertical" Margin="24">
 
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock x:Name="pdf_src_textblock"  FontSize="12" Text="no pdf selected!" VerticalAlignment="Center" Foreground="Red" />
-                    <Button Margin="24, 0" Click="Open_Pdf_Button_Click">
+                    <Button Margin="24, 0, 0, 0" Click="Open_Pdf_Button_Click">
                         <TextBlock Margin="2" Text="select a file"/>
                     </Button>
                 </StackPanel>
@@ -39,7 +39,7 @@
                             <DataTemplate>
                                 <Grid Margin="12" Tag="{Binding FieldName}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" MinWidth="80" />
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
@@ -53,7 +53,7 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
 
-                    <StackPanel Margin="0, 24, 0, 0"  Orientation="Horizontal" HorizontalAlignment="Left">
+                    <StackPanel Margin="0, 32, 0, 0"  Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button Click="Save_Pdf_Button_Click">
                             <TextBlock Margin="2" Text="fill and save"/>
                         </Button>
